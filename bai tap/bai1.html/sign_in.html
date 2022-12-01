@@ -54,9 +54,10 @@
         font-family: 'Courier New', monospace;
         font-weight: bold;
     }
-    input[type=submit]:hover{
+
+    input[type=submit]:hover {
         opacity: 1;
-     }
+    }
 
 
     .container {
@@ -113,9 +114,8 @@
                 <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
             </label>
 
-
-            <p id="checkText"></p>
-            <input type="submit" value="Sign in" />
+            <p id="errorCheck"></p>
+            <input id="btn-submit" type="submit" value="Sign in" />
         </div>
     </form>
 
@@ -125,7 +125,21 @@
     const inpEmail = document.getElementById("inp-email");
     const inpPassword = document.getElementById("inp-password");
     const btnPassword = document.getElementById("btn-password");
-    const checkText = document.getElementById("checkText");
+    const errorCheck = document.getElementById("errorCheck");
+    const btnSubmit = document.getElementById("btn-submit")
+
+
+    var userLogin = [];
+    let signUp = document.getElementById("btn-submit");
+    signUp.addEventListener("click", function () {
+        if (checkForm()) {
+        } else {
+            errorCheck.innerHTML = "Email hoặc mật khẩu không đúng";
+            errorCheck.style.color = "red";
+            window.location.href = "index.html";
+            // console.error("Email hoặc mật khẩu không đúng");
+        }
+    })
 
     function checkForm() {
         if (checkEmail() == true && checkPassword() == true) {
@@ -137,19 +151,16 @@
     }
 
     function checkEmail() {
-        const FormatEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-        if (!(FormatEmail.test(String(inpEmail.value).toLowerCase()))) {
-            checkText.innerHTML = "Email không đúng định dạng";
-            checkText.style.color = "red";
-            console.log("Email không đúng định dạng");
-            return false;
+        let checkUser = localStorage.getItem("user");
+        let listUser = JSON.parse(checkUser)
+        for (const index in listUser) {
+            console.log(listUser[index]);
+            if (listUser[index].email == inpEmail.value && listUser[index].password == inpPassword.value) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        else {
-            checkText.innerHTML = "Email hợp lệ";
-            checkText.style.color = "green";
-        }
-        return true;
     }
 
     function checkPassword() {
@@ -165,17 +176,7 @@
         } return true;
     }
 
-    function valiDatePassword(paramPassWord) {
-        "use strict";
-        return checkPassword;
-    }
 
-    btnPassword.addEventListener('click', function () {
-        this.classList.toggle('fa-eye');
-        inpPassword.setAttribute('type',
-            inpPassword.getAttribute('type') === 'password' ? 'text' : 'password'
-        )
-    })
 
     btnPassword.addEventListener('click', function () {
         this.classList.toggle('fa-eye');
