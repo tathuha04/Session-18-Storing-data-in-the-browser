@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cầu thủ yêu thích</title>
+</head>
+<body>
+    <input id="inputPlayer" type="text" placeholder="Nhập tên cầu thủ" />
+    <input id="addPlayer" type="button" value="Thêm cầu thủ" />
+    <ul id="listPlayer"></ul>
+
+</body>
+
+    <script>
+       
+        let player = document.getElementById("inputPlayer");
+        let control = document.getElementById("addPlayer");
+        let listPlayer = document.getElementById("listPlayer");
+
+        control.addEventListener("click", function (e) {
+    
+                localStorage.setItem(player.value, "player: " + player.value);
+                let liPlayer = document.createElement("li");
+                let liText = document.createTextNode(player.value);
+                liPlayer.appendChild(liText);
+                listPlayer.appendChild(liPlayer);
+                player.value = "";
+            });
+
+                function getAllPlayer() {
+                    for (let index = 0; index < localStorage.length; index++) {
+                        let liPlayer = document.createElement("li");
+                        let liText = document.createTextNode(localStorage.key(index));
+                        liPlayer.appendChild(liText);
+                        listPlayer.appendChild(liPlayer);
+                    }
+                }
+                getAllPlayer();
+
+    </script>
+</html>
