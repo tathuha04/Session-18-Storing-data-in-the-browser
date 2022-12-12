@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Project</title>
+    <script src="https://kit.fontawesome.com/38bc39f5d7.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/reponsive.css" />
+    <script src="./index.js"></script>
+</head>
+
+<body>
+
+    <img src="image/Screenshot (78).png" alt="" style="width: 100%;">
+
+    <header>
+        <nav>
+            <div class="content-nav">
+                <ul>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li><a href="#">Giới Thiệu</a></li>
+                    <li><a href="#">Sản Phẩm</a></li>
+                    <li><a href="#">Liên Hệ : 0394411***</a></li>
+                </ul>
+                <form>
+                    <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." />
+                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </form>
+            </div>
+
+            <button id="cart">
+                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                Giỏ Hàng
+            </button>
+            <button id="login" onclick="">Log in</button>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Giỏ Hàng</h5>
+                        <span class="close">&times;</span>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="cart-row">
+                            <span class="cart-item cart-header cart-column">Sản Phẩm</span>
+                            <span class="cart-price cart-header cart-column">Giá</span>
+                            <span class="cart-quantity cart-header cart-column">Số Lượng</span>
+                        </div>
+                        <div class="cart-items">
+                            <!-- <div class="cart-items">
+
+                            </div> -->
+                        </div>
+                        <div class="cart-total">
+                            <strong class="cart-total-title">Tổng Cộng:</strong>
+                            <span class="cart-total-price">0đ</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary close-footer">Đóng</button>
+                        <button type="button" class="btn btn-primary order">Thanh Toán</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="wrapper">
+        <div class="products">
+            <ul>
+                <li class="main-product">
+                    <div class="img-product">
+                        <img class="img-prd" src="image/sanpham1.jpg" alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">Áo len dài tay kẻ ngang xanh lá</h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">215000đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart" >Thêm Vào Giỏ</button>
+                            
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product">
+                    <div class="img-product">
+                        <img class="img-prd" src="image/sanpham2.jpg" alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">Áo len croptop xanh lá Quảng Châu</h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">189000đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product">
+                    <div class="img-product">
+                        <img class="img-prd" src="image/sanpham3.jpg" alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">Áo sơ mi tay dài thêu hình chữ M</h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">220000đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product no-margin">
+                    <div class="img-product">
+                        <img class="img-prd" src="image/sanpham4.jpg" alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">Hoodie nỉ bông </h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">180000đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product">
+                    <div class="img-product">
+                        <img class="img-prd" src="image/sanpham5.jpg" alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">Áo Hoodie nỉ bông EAHO
+                        </h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">160000đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product">
+                    <div class="img-product">
+                        <img class="img-prd" src="image/sanpham6.jpg" alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">Áo sweater UN xanh rêu</h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">145000đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product">
+                    <div class="img-product">
+                        <img class="img-prd" src="image/sanpham7.jpg" alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">Áo khoác cardigan trơn Chelgy len</h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">199000đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product no-margin">
+                    <div class="img-product">
+                        <img class="img-prd" src="image/sanpham8.jpg" alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">Áo gile hoạ tiết trái tim siêu xinh</h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">139000đ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">Thêm Vào Giỏ</button>
+                        </div>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="text-footer">
+            <p>Contact me</p>
+        </div>
+
+        <div class="icon-footer">
+            <li><a href="">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a></li>
+            <li><a target="_blank" href="https://www.facebook.com/tathuha.204">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a></li>
+            <li><a href="">
+                    <i class="fa-solid fa-envelope"></i>
+                </a></li>
+            <li><a href="">
+                    <i class="fa-brands fa-instagram"></i>
+                </a></li>
+            <li><a href="">
+                    <i class="fa-brands fa-twitter"></i>
+                </a></li>
+        </div>
+    </footer>
+
+</body>
+<script>
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("cart");
+    var close = document.getElementsByClassName("close")[0];
+    var close_footer = document.getElementsByClassName("close-footer")[0];
+    var order = document.getElementsByClassName("order")[0];
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    close.onclick = function () {
+        modal.style.display = "none";
+    }
+    close_footer.onclick = function () {
+        modal.style.display = "none";
+    }
+    order.onclick = function () {
+        alert("Cảm ơn bạn đã thanh toán đơn hàng")
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+
+
+</script>
+
+</html>

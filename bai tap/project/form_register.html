@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register forrm</title>
+    <script src="https://kit.fontawesome.com/38bc39f5d7.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 10px auto;
+    }
+
+    body {
+        font-family: 'Courier New', monospace;
+        width: 400px;
+        background-color: honeydew;
+
+    }
+
+    form {
+        background-color: white;
+    }
+
+
+    input[type=text],
+    input[type=password],
+    input[type=submit] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #e8e7e7;
+    }
+
+    input[type=submit] {
+        font-family: 'Courier New', monospace;
+        font-weight: bold;
+        background-color: #0ea56e;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        opacity: 0.8;
+        cursor: pointer;
+        transition: 0.3s;
+
+    }
+
+    input[type=submit]:hover {
+        opacity: 1;
+    }
+
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .form-control {
+        position: relative;
+    }
+
+
+    .fa-eye-slash {
+        position: absolute;
+        top: 30%;
+        right: 5%;
+    }
+
+    .fa-eye-slash:hover {
+        cursor: pointer;
+    }
+
+    .fa-user-large {
+        position: absolute;
+        top: 30%;
+        right: 5%;
+    }
+</style>
+
+<body>
+
+    <form action="sign_in.html" style="border:1px solid rgb(194, 194, 194)" onsubmit="return checkForm()">
+        <div class="container">
+            <h1>FORM REGISTER</h1>
+
+            <hr>
+            <div class="form-control">
+                <label for="email"><b>Email</b></label>
+                <input id="inp-email" type="text" placeholder="Enter Email" name="email" onchange="checkEmail()"
+                    required>
+                <i class="fa-solid fa-user-large"></i>
+                <p id="noteEmail"></p>
+            </div>
+
+            <div class="form-control">
+                <label for="password"><b>Password</b></label>
+                <input type="password" id="inp-password" placeholder="Enter Password" name="password"
+                    onchange="checkPassword()" required>
+                <i class="fa-solid fa-eye-slash" id="btn-password"></i>
+                <p id="notePassword"></p>
+            </div>
+
+            <div class="form-control">
+                <label for="confirmPassword"><b>Repeat Password</b></label>
+                <input type="password" id="inp-confirmPassword" placeholder="Repeat Password" name="confirmPassword"
+                    onchange="checkConfirmPassword()" required>
+                <i class="fa-solid fa-eye-slash" id="btn-confirmPassword"></i>
+                <p id="noteConfirmPassword"></p>
+
+            </div>
+
+            <input id="btn-submit" type="submit" value="Register" />
+        </div>
+    </form>
+
+</body>
+
+<script>
+    const inpEmail = document.getElementById("inp-email");
+    const inpPassword = document.getElementById("inp-password");
+    const btnPassword = document.getElementById("btn-password");
+    const inpConfirmPassword = document.getElementById("inp-confirmPassword");
+    const btnConfirmPassword = document.getElementById("btn-confirmPassword");
+    const btnsubmit = document.getElementById("btn-submit");
+    const noteEmail = document.getElementById("noteEmail");
+    const notePassword = document.getElementById("notePassword");
+    const noteConfirmPassword = document.getElementById("noteConfirmPassword");
+
+    ///////////
+    let signUp = document.getElementById("btn-submit");
+    signUp.addEventListener('click', function () {
+        if (checkForm()) {
+            let object = {
+                email: inpEmail.value,
+                password: inpPassword.value,
+            }
+            let listUser = localStorage.getItem("user");
+
+            if (listUser == null) {
+                listUser = [];
+                listUser.push(object);
+                localStorage.setItem("user", JSON.stringify(listUser));
+            } else {
+                listUser = JSON.parse(listUser);
+                listUser.push(object);
+                localStorage.setItem("user", JSON.stringify(listUser));
+            }
+
+        }
+    })
+/// check trùng email
+    function checkForm() {
+        if (checkEmail() == true && checkPassword() == true && checkConfirmPassword() == true) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    function checkEmail() {
+        const FormatEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (!(FormatEmail.test(String(inpEmail.value).toLowerCase()))) {
+            noteEmail.innerHTML = "Email không đúng định dạng";
+            noteEmail.style.color = "red";
+            console.log("Email không đúng định dạng");
+            return false;
+        }
+        else {
+            noteEmail.innerHTML = "Email hợp lệ";
+            noteEmail.style.color = "green";
+        }
+        return true;
+    }
+
+    function checkPassword() {
+        let decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+        if (!(inpPassword.value.match(decimal))) {
+            console.log("Mật khẩu không đúng định dạng");
+            notePassword.innerHTML = "Mật khẩu không đúng định dạng";
+            notePassword.style.color = "red";
+            return false;
+        } else {
+            notePassword.innerHTML = "Mật khẩu hợp lệ";
+            notePassword.style.color = "green";
+        } return true;
+    }
+
+
+    function checkConfirmPassword() {
+        if (inpConfirmPassword.value !== inpPassword.value) {
+            console.log("Mật khẩu không hợp lệ");
+            noteConfirmPassword.innerHTML = "Mật khẩu không hợp lệ";
+            noteConfirmPassword.style.color = "red";
+            return false;
+        } else {
+            noteConfirmPassword.innerHTML = "Mật khẩu hợp lệ";
+            noteConfirmPassword.style.color = "green";
+        } return true;
+    }
+
+    btnPassword.addEventListener('click', function () {
+        this.classList.toggle('fa-eye');
+        inpPassword.setAttribute('type',
+            inpPassword.getAttribute('type') === 'password' ? 'text' : 'password'
+        )
+    })
+
+    btnConfirmPassword.addEventListener('click', function () {
+        this.classList.toggle('fa-eye');
+        inpConfirmPassword.setAttribute('type',
+            inpConfirmPassword.getAttribute('type') === 'password' ? 'text' : 'password'
+        )
+    })
+
+
+</script>
+
+</html>
